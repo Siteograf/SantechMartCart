@@ -8,10 +8,72 @@
 	<meta content="telephone=no" name="format-detection">
 
 
-	 <link href="./index_files/style.min.css" type="text/css" rel="stylesheet">
-	 <link href="./index_files/ion.rangeSlider.min.css" type="text/css" rel="stylesheet">
-	 <link href="./index_files/gallerybox.min.css" type="text/css" rel="stylesheet">
+	<!-- <script type="javascript" src="./js/todo.js"></script> -->
 
+	 <link href="./css/style.css" type="text/css" rel="stylesheet">
+	 <link href="./css/todo.css" type="text/css" rel="stylesheet">
+	 <link href="./css/ion.rangeSlider.css" type="text/css" rel="stylesheet">
+	 <link href="./css/gallerybox.css" type="text/css" rel="stylesheet">
+
+	 <link href="./css/font-awesome.min.css" type="text/css" rel="stylesheet">
+	<link href="./css/v4-shims.min.css" type="text/css" rel="stylesheet">
+	<link href="./css/ui.design-tokens.min.css" type="text/css" rel="stylesheet">
+	<link href="./css/ui.font.opensans.min.css" type="text/css" rel="stylesheet">
+	<link href="./css/main.popup.bundle.min.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" href="./css/template_styles.min.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;">
+	<noscript>
+		<link rel="stylesheet" href="./css/template_styles.min.css?17212278405541">
+	</noscript>
+
+			<!-- TODO -->
+			<script>
+
+				function toggleAllCheckboxes() {
+					const masterCheckbox = document.getElementById('masterCheckbox');
+					const checkboxes = document.querySelectorAll('.toggleCheckbox');
+					checkboxes.forEach(checkbox => {
+					checkbox.checked = masterCheckbox.checked;
+					});
+
+					toggleContent(); // Update display & border color
+				}
+
+				function updateMasterCheckbox() {
+					const masterCheckbox = document.getElementById('masterCheckbox');
+					const checkboxes = document.querySelectorAll('.toggleCheckbox');
+					masterCheckbox.checked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+
+					toggleContent(); // Update display & border color
+				}
+
+				
+				function toggleContent() {
+	
+					const checkboxes = document.querySelectorAll('.toggleCheckbox');
+					const contentBlock = document.getElementById('contentBlock');
+					const contentTotal = document.getElementById('contentTotal');
+					const contentFloat = document.getElementById('floatCart');
+					
+					const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+					contentBlock.style.display = anyChecked ? 'none' : 'flex';
+					contentTotal.style.display = anyChecked ? 'block' : 'none';
+					contentFloat.style.borderColor = anyChecked ? '#7ac0ff' : '#ffb0b0';
+				  }
+
+				  function removeCheckedRows() {
+					const checkboxes = document.querySelectorAll('.toggleCheckbox');
+					
+					checkboxes.forEach(checkbox => {
+					if (checkbox.checked) {
+						checkbox.closest('.block-cart__row').remove();
+					}
+					});
+				}
+
+
+			</script>
+			<!-- / TODO -->
 
 	<link rel="manifest" href="https://www.stm66.ru/manifest.json">
 	<link rel="icon" type="image/x-icon" href="https://www.stm66.ru/favicon.ico">
@@ -22,7 +84,7 @@
 
 	<title>Корзина</title>
 
-		<script type="text/javascript" async="" src="./index_files/analytics.js"></script><script type="text/javascript" async="" src="./index_files/js"></script><script async="" src="./index_files/tag.js"></script><script type="text/javascript" async="" id="topmailru-code" src="./index_files/code.js"></script><script type="text/javascript" async="" src="./index_files/ba.js"></script><script data-skip-moving="true">
+		<script type="text/javascript" async="" src="./js/analytics.js"></script><script type="text/javascript" async="" src="./js/js"></script><script async="" src="./js/tag.js"></script><script type="text/javascript" async="" id="topmailru-code" src="./js/code.js"></script><script type="text/javascript" async="" src="./js/ba.js"></script><script data-skip-moving="true">
 		/**
 		 *  @type {boolean}
 		 */
@@ -42,17 +104,12 @@
 <script data-skip-moving="true">(function(w, d, n) {var cl = "bx-core";var ht = d.documentElement;var htc = ht ? ht.className : undefined;if (htc === undefined || htc.indexOf(cl) !== -1){return;}var ua = n.userAgent;if (/(iPad;)|(iPhone;)/i.test(ua)){cl += " bx-ios";}else if (/Windows/i.test(ua)){cl += ' bx-win';}else if (/Macintosh/i.test(ua)){cl += " bx-mac";}else if (/Linux/i.test(ua) && !/Android/i.test(ua)){cl += " bx-linux";}else if (/Android/i.test(ua)){cl += " bx-android";}cl += (/(ipad|iphone|android|mobile|touch)/i.test(ua) ? " bx-touch" : " bx-no-touch");cl += w.devicePixelRatio && w.devicePixelRatio >= 2? " bx-retina": " bx-no-retina";if (/AppleWebKit/.test(ua)){cl += " bx-chrome";}else if (/Opera/.test(ua)){cl += " bx-opera";}else if (/Firefox/.test(ua)){cl += " bx-firefox";}ht.className = htc ? htc + " " + cl : cl;})(window, document, navigator);</script>
 
 
-<link href="./index_files/font-awesome.min.css" type="text/css" rel="stylesheet">
-<link href="./index_files/v4-shims.min.css" type="text/css" rel="stylesheet">
-<link href="./index_files/ui.design-tokens.min.css" type="text/css" rel="stylesheet">
-<link href="./index_files/ui.font.opensans.min.css" type="text/css" rel="stylesheet">
-<link href="./index_files/main.popup.bundle.min.css" type="text/css" rel="stylesheet">
 
 
 
 
-			<link rel="stylesheet" href="./index_files/template_styles.min.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;">
-			<noscript><link rel="stylesheet" href="/local/templates/main/css/template_styles.min.css?17212278405541"></noscript>
+
+
 			
 
 
@@ -61,10 +118,10 @@
 			var __cs = __cs || [];
 			__cs.push(["setCsAccount", "oFmaSzYNZiM5XSHF0nMYcXbXpF1PcWcA"]);
 		</script>
-		<script data-skip-moving="true" async="" src="./index_files/cs.min.js"></script>
+		<script data-skip-moving="true" async="" src="./js/cs.min.js"></script>
 
 						
-				<script data-skip-moving="true">!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src='https://vk.com/js/api/openapi.js?169',t.onload=function(){VK.Retargeting.Init("VK-RTRG-1372340-cpwtG"),VK.Retargeting.Hit()},document.head.appendChild(t)}();</script><script type="text/javascript" async="" src="./index_files/openapi.js"></script>
+				<script data-skip-moving="true">!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src='https://vk.com/js/api/openapi.js?169',t.onload=function(){VK.Retargeting.Init("VK-RTRG-1372340-cpwtG"),VK.Retargeting.Hit()},document.head.appendChild(t)}();</script><script type="text/javascript" async="" src="./js/openapi.js"></script>
 			<style type="text/css">.fancybox-margin{margin-right:0px;}</style><style>
             .flipX video::-webkit-media-text-track-display {
                 transform: matrix(-1, 0, 0, 1, 0, 0) !important;
@@ -89,24 +146,10 @@
                 animation: blinkWarning 1s linear infinite;
             }</style>
 			
-		<!-- TODO -->
-		<link href="./index_files/todo/todo.css" type="text/css" rel="stylesheet">
-		<script type="javascript" src="./index_files/todo/todo.js"></script>
-		<script>
-			function toggleContent() {
 
-				const checkboxes = document.querySelectorAll('.toggleCheckbox');
-				const contentBlock = document.getElementById('contentBlock');
-				const contentTotal = document.getElementById('contentTotal');
-				const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-				contentBlock.style.display = anyChecked ? 'none' : 'block';
-				contentTotal.style.display = anyChecked ? 'block' : 'none';
-			  }
-		</script>
-		<!-- / TODO -->
 
 		</head>
-<body class="">
+<body class="in-scroll">
 	<div id="panel"></div>
 
 
@@ -119,7 +162,7 @@
 				<div class="layout-row clearfix">
 					<div class="header__mobile-catalog-button"></div>
 											<a href="https://www.stm66.ru/" class="logo">
-							<img src="./index_files/logo.svg" alt="" class="logo__img loading" width="244" height="45" data-was-processed="true">
+							<img src="./images/logo.svg" alt="" class="logo__img loading" width="244" height="45" data-was-processed="true">
 						</a>
 										<div class="header__city block-city js-geo-header-city">
 <div class="block-city__title"><noindex>Ваш город</noindex></div>
@@ -161,11 +204,11 @@
 <a rel="nofollow" data-fancybox-type="ajax" href="https://www.stm66.ru/ajax/commonForm.php?iblockCode=form_callback" class="fancybox link link--type-dashed desk">Заказать звонок</a>							</div>
 							<div id="compareListMobileR7Z7Le" class="compare">
 		<a href="https://www.stm66.ru/compare/" class="mob_head_ico header__icons_link mobile comparison" target="_blank">
-		<img src="./index_files/compare_bt.webp" width="25" height="25" alt="">
+		<img src="./images/icons/compare_bt.webp" width="25" height="25" alt="">
 	<!--'start_frame_cache_compareListMobileR7Z7Le'--><span class="mobile-cart__counter hidden">0</span><!--'end_frame_cache_compareListMobileR7Z7Le'-->	</a>
 </div>
 														<a href="https://www.stm66.ru/favorites/" class="mob_head_ico header__icons_link mobile favorite">
-								<img loading="lazy" src="./index_files/favorite_bt.webp" width="25" height="25" alt="" title="Избранное">
+								<img loading="lazy" src="./images/icons/favorite_bt.webp" width="25" height="25" alt="" title="Избранное">
 								<span class="mobile-cart__counter hidden"></span>
 							</a>
 														<nav class="header__menu">
@@ -231,13 +274,13 @@
 	</div>
 	<div id="compareListBasketR7Z7Le" class="compare">
 		<a href="https://www.stm66.ru/compare/" target="_blank" class="header__icons_link desktop comparison ">
-		<img src="./index_files/compare.webp" width="25" height="25" alt="">
+		<img src="./images/icons/compare.webp" width="25" height="25" alt="">
 	<!--'start_frame_cache_compareListBasketR7Z7Le'--><span class="mobile-cart__counter hidden">0</span><!--'end_frame_cache_compareListBasketR7Z7Le'-->	</a>
 </div>
 <script type="text/javascript">
 var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compareListBasketR7Z7Le'},'AJAX':{'url':'/ajax/refreshSmallBasket.php','params':{'ajax_action':'Y'},'reload':{'compare_list_reload':'Y'},'templates':{'delete':'?action_header_basket=DELETE_FROM_COMPARE_LIST&id_header_basket='}},'POSITION':{'fixed':false,'align':{'vertical':'','horizontal':''}}})
 </script>	<a href="https://www.stm66.ru/favorites/" class="header__icons_link desktop favorite" title="Избранное">
-		<img src="./index_files/favorite.webp" width="25" height="25" alt="">
+		<img src="./images/icons/favorite.webp" width="25" height="25" alt="">
 		<span class="mobile-cart__counter hidden"></span>
 	</a>
 			<div class="header-cart__calculate">
@@ -328,6 +371,23 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 		<h4>Проверьте состав заказа</h4>
 	<div class="block-cart">
 		<div class="block-cart__table">
+			<!-- TODO -->
+			<div class="service-header">
+
+				<div class="service-left">
+					<input type="checkbox" id="masterCheckbox" onclick="toggleAllCheckboxes()">
+					<span>Выбрать Всё</span>
+					<a href="#" onclick="removeCheckedRows()" style="color: red;">Удалить выбранные</a>
+				</div>
+
+				<div class="service-right">
+					<a href="#" class="js-share link link--type-dashed share_bt" title="Поделиться">Поделиться</a>
+					<a href="#" class="js-print link link--type-dashed print_bt" title="Печать">Print</a>
+					<a href="#" class="js-pdf link link--type-dashed pdf_bt" title="PDF" title="PDF">PDF</a>
+				</div>
+				
+			</div><!-- / TODO -->
+
 			<div class="block-cart__row block-cart__head">
 				<div class="block-cart__title">Наименование товара</div>
 				<div class="block-cart__title">Стоимость</div>
@@ -342,7 +402,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 				<div class="block-cart__cell">
 					<div class="block-cart-item">
 						<div class="block-cart-item__checkbox">
-							<input type="checkbox" class="toggleCheckbox" onclick="toggleContent()">
+							<input type="checkbox" class="toggleCheckbox" onclick="updateMasterCheckbox()">
 						</div>
 					</div>
 				</div><!-- / TODO -->
@@ -350,7 +410,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 					<div class="block-cart-item">
 						
 							<div class="block-cart-item__img">
-								<img src="./index_files/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" data-src="/upload/resize_cache/iblock/5b5/8vqul22ivhhu9qeyu4ovvtp8gyv80xru/160_160_1/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" alt="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" title="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" class="loaded" data-was-processed="true">
+								<img src="./images/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" data-src="/upload/resize_cache/iblock/5b5/8vqul22ivhhu9qeyu4ovvtp8gyv80xru/160_160_1/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" alt="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" title="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" class="loaded" data-was-processed="true">
 							</div>
 													<div class="block-cart-item__title">
 							<a href="https://www.stm66.ru/p/gasitel-gidroudarov-1-2n-far-fa-2895-12/">Гаситель гидроударов 1/2"н Far FA 2895 12</a>
@@ -389,9 +449,11 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 						 <div class="block-cart__measure">шт</div><!-- / TODO -->
 					</div>
 					
-					<!-- DELETE --><!-- <div class="block-cart__cell measure-c">
+					<!-- DELETE
+					 <div class="block-cart__cell measure-c">
 						<div class="block-cart__measure">шт</div>
-					</div>--><!-- / DELETE -->
+					</div>
+					-->
 					
 					
 					<div class="block-cart__cell">
@@ -415,14 +477,14 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 				<div class="block-cart__cell">
 					<div class="block-cart-item">
 						<div class="block-cart-item__checkbox">
-							<input type="checkbox" class="toggleCheckbox" onclick="toggleContent()">
+							<input type="checkbox" class="toggleCheckbox" onclick="updateMasterCheckbox()">
 						</div>
 					</div>
 				</div><!-- / TODO -->
 				<div class="block-cart__cell">
 					<div class="block-cart-item">
 							<div class="block-cart-item__img">
-								<img src="./index_files/Rys_Kondens.jpg" data-src="/upload/resize_cache/iblock/e07/160_160_1/Rys_Kondens.jpg" alt="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" title="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" class="loaded" data-was-processed="true">
+								<img src="./images/Rys_Kondens.jpg" data-src="/upload/resize_cache/iblock/e07/160_160_1/Rys_Kondens.jpg" alt="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" title="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" class="loaded" data-was-processed="true">
 							</div>
 							<div class="block-cart-item__title">
 							<a href="https://www.stm66.ru/p/nastennyy-kondensatsionnyy-gazovyy-kotel-odnokonturnyy-turbirovannyy-25-0kvt-protherm-rys-25-mko-a-0010020289/">Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289</a>
@@ -478,7 +540,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 				<div class="block-cart__cell">
 					<div class="block-cart-item">
 						<div class="block-cart-item__checkbox">
-							<input type="checkbox" class="toggleCheckbox" onclick="toggleContent()">
+							<input type="checkbox" class="toggleCheckbox" onclick="updateMasterCheckbox()">
 						</div>
 					</div>
 				</div><!-- / TODO -->
@@ -486,7 +548,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 					<div class="block-cart-item">
 						
 							<div class="block-cart-item__img">
-								<img src="./index_files/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" data-src="/upload/resize_cache/iblock/5b5/8vqul22ivhhu9qeyu4ovvtp8gyv80xru/160_160_1/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" alt="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" title="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" class="loaded" data-was-processed="true">
+								<img src="./images/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" data-src="/upload/resize_cache/iblock/5b5/8vqul22ivhhu9qeyu4ovvtp8gyv80xru/160_160_1/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" alt="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" title="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" class="loaded" data-was-processed="true">
 							</div>
 													<div class="block-cart-item__title">
 							<a href="https://www.stm66.ru/p/gasitel-gidroudarov-1-2n-far-fa-2895-12/">Гаситель гидроударов 1/2"н Far FA 2895 12</a>
@@ -551,14 +613,14 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 				<div class="block-cart__cell">
 					<div class="block-cart-item">
 						<div class="block-cart-item__checkbox">
-							<input type="checkbox" class="toggleCheckbox" onclick="toggleContent()">
+							<input type="checkbox" class="toggleCheckbox" onclick="updateMasterCheckbox()">
 						</div>
 					</div>
 				</div><!-- / TODO -->
 				<div class="block-cart__cell">
 					<div class="block-cart-item">
 							<div class="block-cart-item__img">
-								<img src="./index_files/Rys_Kondens.jpg" data-src="/upload/resize_cache/iblock/e07/160_160_1/Rys_Kondens.jpg" alt="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" title="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" class="loaded" data-was-processed="true">
+								<img src="./images/Rys_Kondens.jpg" data-src="/upload/resize_cache/iblock/e07/160_160_1/Rys_Kondens.jpg" alt="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" title="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" class="loaded" data-was-processed="true">
 							</div>
 							<div class="block-cart-item__title">
 							<a href="https://www.stm66.ru/p/nastennyy-kondensatsionnyy-gazovyy-kotel-odnokonturnyy-turbirovannyy-25-0kvt-protherm-rys-25-mko-a-0010020289/">Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289</a>
@@ -614,7 +676,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 				<div class="block-cart__cell">
 					<div class="block-cart-item">
 						<div class="block-cart-item__checkbox">
-							<input type="checkbox" class="toggleCheckbox" onclick="toggleContent()">
+							<input type="checkbox" class="toggleCheckbox" onclick="updateMasterCheckbox()">
 						</div>
 					</div>
 				</div><!-- / TODO -->
@@ -622,7 +684,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 					<div class="block-cart-item">
 						
 							<div class="block-cart-item__img">
-								<img src="./index_files/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" data-src="/upload/resize_cache/iblock/5b5/8vqul22ivhhu9qeyu4ovvtp8gyv80xru/160_160_1/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" alt="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" title="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" class="loaded" data-was-processed="true">
+								<img src="./images/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" data-src="/upload/resize_cache/iblock/5b5/8vqul22ivhhu9qeyu4ovvtp8gyv80xru/160_160_1/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" alt="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" title="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" class="loaded" data-was-processed="true">
 							</div>
 													<div class="block-cart-item__title">
 							<a href="https://www.stm66.ru/p/gasitel-gidroudarov-1-2n-far-fa-2895-12/">Гаситель гидроударов 1/2"н Far FA 2895 12</a>
@@ -687,14 +749,14 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 				<div class="block-cart__cell">
 					<div class="block-cart-item">
 						<div class="block-cart-item__checkbox">
-							<input type="checkbox" class="toggleCheckbox" onclick="toggleContent()">
+							<input type="checkbox" class="toggleCheckbox" onclick="updateMasterCheckbox()">
 						</div>
 					</div>
 				</div><!-- / TODO -->
 				<div class="block-cart__cell">
 					<div class="block-cart-item">
 							<div class="block-cart-item__img">
-								<img src="./index_files/Rys_Kondens.jpg" data-src="/upload/resize_cache/iblock/e07/160_160_1/Rys_Kondens.jpg" alt="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" title="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" class="loaded" data-was-processed="true">
+								<img src="./images/Rys_Kondens.jpg" data-src="/upload/resize_cache/iblock/e07/160_160_1/Rys_Kondens.jpg" alt="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" title="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" class="loaded" data-was-processed="true">
 							</div>
 							<div class="block-cart-item__title">
 							<a href="https://www.stm66.ru/p/nastennyy-kondensatsionnyy-gazovyy-kotel-odnokonturnyy-turbirovannyy-25-0kvt-protherm-rys-25-mko-a-0010020289/">Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289</a>
@@ -750,7 +812,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 				<div class="block-cart__cell">
 					<div class="block-cart-item">
 						<div class="block-cart-item__checkbox">
-							<input type="checkbox" class="toggleCheckbox" onclick="toggleContent()">
+							<input type="checkbox" class="toggleCheckbox" onclick="updateMasterCheckbox()">
 						</div>
 					</div>
 				</div><!-- / TODO -->
@@ -758,7 +820,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 					<div class="block-cart-item">
 						
 							<div class="block-cart-item__img">
-								<img src="./index_files/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" data-src="/upload/resize_cache/iblock/5b5/8vqul22ivhhu9qeyu4ovvtp8gyv80xru/160_160_1/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" alt="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" title="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" class="loaded" data-was-processed="true">
+								<img src="./images/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" data-src="/upload/resize_cache/iblock/5b5/8vqul22ivhhu9qeyu4ovvtp8gyv80xru/160_160_1/gasitel_gidroudarov_1_2n_far_fa_2895_12_1.jpg" alt="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" title="Гаситель гидроударов 1/2&quot;н Far FA 2895 12" class="loaded" data-was-processed="true">
 							</div>
 													<div class="block-cart-item__title">
 							<a href="https://www.stm66.ru/p/gasitel-gidroudarov-1-2n-far-fa-2895-12/">Гаситель гидроударов 1/2"н Far FA 2895 12</a>
@@ -823,14 +885,14 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 				<div class="block-cart__cell">
 					<div class="block-cart-item">
 						<div class="block-cart-item__checkbox">
-							<input type="checkbox" class="toggleCheckbox" onclick="toggleContent()">
+							<input type="checkbox" class="toggleCheckbox" onclick="updateMasterCheckbox()">
 						</div>
 					</div>
 				</div><!-- / TODO -->
 				<div class="block-cart__cell">
 					<div class="block-cart-item">
 							<div class="block-cart-item__img">
-								<img src="./index_files/Rys_Kondens.jpg" data-src="/upload/resize_cache/iblock/e07/160_160_1/Rys_Kondens.jpg" alt="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" title="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" class="loaded" data-was-processed="true">
+								<img src="./images/Rys_Kondens.jpg" data-src="/upload/resize_cache/iblock/e07/160_160_1/Rys_Kondens.jpg" alt="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" title="Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289" class="loaded" data-was-processed="true">
 							</div>
 							<div class="block-cart-item__title">
 							<a href="https://www.stm66.ru/p/nastennyy-kondensatsionnyy-gazovyy-kotel-odnokonturnyy-turbirovannyy-25-0kvt-protherm-rys-25-mko-a-0010020289/">Настенный конденсационный газовый котел одноконтурный турбированный 25кВт Protherm Рысь 25 MKO-A 0010020289</a>
@@ -889,22 +951,24 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 		
 		</div>
 	<!-- TODO -->
-	<div class="block-cart__total-float"><!-- / TODO -->
-		<div class="content-block" id="contentBlock"><!--<img src="index_files/todo/img/caution.svg">-->✔ Выберите товары, чтобы перейти к оформлению заказа</div>
-		<!-- TODO --><div id="contentTotal"><!-- / TODO -->
+	<div class="block-cart__total-float" id="floatCart">
+		<div class="content-block" id="contentBlock"><img src="./images/icons/caution.svg">Выберите товары, чтобы перейти к оформлению заказа</div>
+		<div id="contentTotal"><!-- / TODO -->
 			<div class="block-cart__total block-total">
-				<div class="block-total__title">Итого:</div>
-				<div class="block-total__count">11 товаров</div>
-				<div class="block-total__value">495 684 <span class="rub">Р</span></div>
+				<!-- TODO -->
+				<div class="block-total__title">Ваша корзина</div> <div class="block-total__count">11 товаров</div>
+				<div class="block-total__title">Стоимость</div> <div class="block-total__value">495 684 <span class="rub">Р</span></div>
+				<div class="block-total__title">Скидка</div> <div class="block-total__discount">684 <span class="rub">Р</span></div>
+				<div class="block-total__title">Итого:</div><div class="block-total__value">495 000 <span class="rub">Р</span></div><!-- / TODO -->
 			</div>
-
+		
 											
 			<div class="block-cart__buttons">
-								<a href="https://www.stm66.ru/cart/order/" class="button button--size-large button--type-fill">Оформить заказ</a>
-					<a data-fancybox-type="ajax" href="https://www.stm66.ru/ajax/buyOneClick.php?productId=0" class="js-catalog-kit-buy-one-click button button--size-large button--type-stroke fancybox" data-product-id="0">Купить в 1 клик</a>
+				<a href="https://www.stm66.ru/cart/order/" class="button button--size-large button--type-fill">Оформить заказ</a>
+				<a data-fancybox-type="ajax" href="https://www.stm66.ru/ajax/buyOneClick.php?productId=0" class="js-catalog-kit-buy-one-click button button--size-large button--type-stroke fancybox" data-product-id="0">Купить в 1 клик</a>
 			</div>
-		<!-- TODO --></div><!-- / TODO -->
-	<!-- TODO -->
+		<!-- TODO -->
+		</div>
 	</div><!-- / TODO -->
 
 	</div>
@@ -927,7 +991,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 			<div class="layout-row clearfix">
 				<div class="footer__info">
 					<a href="https://www.stm66.ru/" class="footer-logo">
-						<img src="./index_files/logo.svg" data-src="/local/templates/main/images/logo.svg" alt="" class="footer-logo__img loaded" loading="lazy" data-was-processed="true">
+						<img src="./images/logo.svg" data-src="/local/templates/main/images/logo.svg" alt="" class="footer-logo__img loaded" loading="lazy" data-was-processed="true">
 					</a>
 					<div class="footer__copyright">© ООО «Сантехмарт», 2006–2024</div>
 					<div class="footer__sitemap">
@@ -994,7 +1058,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
  <a href="mailto:sale@stm66.ru">sale@stm66.ru</a>
 </div>						</div>
 						<div class="footer-contacts__social">
-							<a href="https://vk.com/stm66" target="_blank"><img loading="lazy" src="./index_files/vk_logo.webp" data-src="/images/vk_logo.webp" width="24" height="24" alt="Vkontakte" class="lazy loaded" data-was-processed="true"></a>
+							<a href="https://vk.com/stm66" target="_blank"><img loading="lazy" src="./images/vk_logo.webp" data-src="/images/vk_logo.webp" width="24" height="24" alt="Vkontakte" class="lazy loaded" data-was-processed="true"></a>
 						</div>
 					</div>
 				</div>
@@ -1005,7 +1069,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 				<div class="footer__text">
 																			</div>
 				<div class="footer__producer block-producer">
-					<img src="./index_files/producer-logo.svg" data-src="/local/templates/main/images/producer-logo.svg" width="106" height="26" alt="" class="block-producer__logo loaded" loading="lazy" data-was-processed="true">
+					<img src="./images/producer-logo.svg" data-src="/local/templates/main/images/producer-logo.svg" width="106" height="26" alt="" class="block-producer__logo loaded" loading="lazy" data-was-processed="true">
 					<ul class="block-producer__services">
 	<li class="block-producer__service"><a href="https://siteactiv.ru/prodvigenie-internet-magazinov/" target="_blank">Продвижение интернет-магазина</a></li>
 </ul>
@@ -1030,7 +1094,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 	
 
 <script>if(!window.BX)window.BX={};if(!window.BX.message)window.BX.message=function(mess){if(typeof mess==='object'){for(let i in mess) {BX.message[i]=mess[i];} return true;}};</script>
-<script>(window.BX||top.BX).message({"JS_CORE_LOADING":"Загрузка...","JS_CORE_NO_DATA":"- Нет данных -","JS_CORE_WINDOW_CLOSE":"Закрыть","JS_CORE_WINDOW_EXPAND":"Развернуть","JS_CORE_WINDOW_NARROW":"Свернуть в окно","JS_CORE_WINDOW_SAVE":"Сохранить","JS_CORE_WINDOW_CANCEL":"Отменить","JS_CORE_WINDOW_CONTINUE":"Продолжить","JS_CORE_H":"ч","JS_CORE_M":"м","JS_CORE_S":"с","JSADM_AI_HIDE_EXTRA":"Скрыть лишние","JSADM_AI_ALL_NOTIF":"Показать все","JSADM_AUTH_REQ":"Требуется авторизация!","JS_CORE_WINDOW_AUTH":"Войти","JS_CORE_IMAGE_FULL":"Полный размер"});</script><script src="./index_files/core.min.js"></script><script>BX.Runtime.registerExtension({"name":"main.core","namespace":"BX","loaded":true});</script>
+<script>(window.BX||top.BX).message({"JS_CORE_LOADING":"Загрузка...","JS_CORE_NO_DATA":"- Нет данных -","JS_CORE_WINDOW_CLOSE":"Закрыть","JS_CORE_WINDOW_EXPAND":"Развернуть","JS_CORE_WINDOW_NARROW":"Свернуть в окно","JS_CORE_WINDOW_SAVE":"Сохранить","JS_CORE_WINDOW_CANCEL":"Отменить","JS_CORE_WINDOW_CONTINUE":"Продолжить","JS_CORE_H":"ч","JS_CORE_M":"м","JS_CORE_S":"с","JSADM_AI_HIDE_EXTRA":"Скрыть лишние","JSADM_AI_ALL_NOTIF":"Показать все","JSADM_AUTH_REQ":"Требуется авторизация!","JS_CORE_WINDOW_AUTH":"Войти","JS_CORE_IMAGE_FULL":"Полный размер"});</script><script src="./js/core.min.js"></script><script>BX.Runtime.registerExtension({"name":"main.core","namespace":"BX","loaded":true});</script>
 <script>BX.setJSList(["\/bitrix\/js\/main\/core\/core_ajax.js","\/bitrix\/js\/main\/core\/core_promise.js","\/bitrix\/js\/main\/polyfill\/promise\/js\/promise.js","\/bitrix\/js\/main\/loadext\/loadext.js","\/bitrix\/js\/main\/loadext\/extension.js","\/bitrix\/js\/main\/polyfill\/promise\/js\/promise.js","\/bitrix\/js\/main\/polyfill\/find\/js\/find.js","\/bitrix\/js\/main\/polyfill\/includes\/js\/includes.js","\/bitrix\/js\/main\/polyfill\/matches\/js\/matches.js","\/bitrix\/js\/ui\/polyfill\/closest\/js\/closest.js","\/bitrix\/js\/main\/polyfill\/fill\/main.polyfill.fill.js","\/bitrix\/js\/main\/polyfill\/find\/js\/find.js","\/bitrix\/js\/main\/polyfill\/matches\/js\/matches.js","\/bitrix\/js\/main\/polyfill\/core\/dist\/polyfill.bundle.js","\/bitrix\/js\/main\/core\/core.js","\/bitrix\/js\/main\/polyfill\/intersectionobserver\/js\/intersectionobserver.js","\/bitrix\/js\/main\/lazyload\/dist\/lazyload.bundle.js","\/bitrix\/js\/main\/polyfill\/core\/dist\/polyfill.bundle.js","\/bitrix\/js\/main\/parambag\/dist\/parambag.bundle.js"]);
 </script>
 <script>BX.Runtime.registerExtension({"name":"ui.dexie","namespace":"BX.Dexie3","loaded":true});</script>
@@ -1044,12 +1108,12 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 <script>BX.Runtime.registerExtension({"name":"ui.fonts.opensans","namespace":"window","loaded":true});</script>
 <script>BX.Runtime.registerExtension({"name":"main.popup","namespace":"BX.Main","loaded":true});</script>
 <script>BX.Runtime.registerExtension({"name":"popup","namespace":"window","loaded":true});</script>
-<script>(window.BX||top.BX).message({"LANGUAGE_ID":"ru","FORMAT_DATE":"DD.MM.YYYY","FORMAT_DATETIME":"DD.MM.YYYY HH:MI:SS","COOKIE_PREFIX":"BITRIX_SM","SERVER_TZ_OFFSET":"18000","UTF_MODE":"Y","SITE_ID":"s1","SITE_DIR":"\/","USER_ID":"","SERVER_TIME":1730799541,"USER_TZ_OFFSET":-10800,"USER_TZ_AUTO":"Y","bitrix_sessid":"72998c518b5a98810015afccbab6e38e"});</script><script src="./index_files/kernel_main_v1.js"></script>
-<script src="./index_files/dexie3.bundle.min.js"></script>
-<script src="./index_files/core_ls.min.js"></script>
-<script src="./index_files/core_frame_cache.min.js"></script>
-<script src="./index_files/jquery-2.2.4.min.js"></script>
-<script src="./index_files/main.popup.bundle.min.js"></script>
+<script>(window.BX||top.BX).message({"LANGUAGE_ID":"ru","FORMAT_DATE":"DD.MM.YYYY","FORMAT_DATETIME":"DD.MM.YYYY HH:MI:SS","COOKIE_PREFIX":"BITRIX_SM","SERVER_TZ_OFFSET":"18000","UTF_MODE":"Y","SITE_ID":"s1","SITE_DIR":"\/","USER_ID":"","SERVER_TIME":1730799541,"USER_TZ_OFFSET":-10800,"USER_TZ_AUTO":"Y","bitrix_sessid":"72998c518b5a98810015afccbab6e38e"});</script><script src="./js/kernel_main_v1.js"></script>
+<script src="./js/dexie3.bundle.min.js"></script>
+<script src="./js/core_ls.min.js"></script>
+<script src="./js/core_frame_cache.min.js"></script>
+<script src="./js/jquery-2.2.4.min.js"></script>
+<script src="./js/main.popup.bundle.min.js"></script>
 <script>BX.setJSList(["\/bitrix\/js\/main\/core\/core_fx.js","\/bitrix\/js\/main\/session.js","\/bitrix\/js\/main\/pageobject\/pageobject.js","\/bitrix\/js\/main\/core\/core_window.js","\/bitrix\/js\/main\/date\/main.date.js","\/bitrix\/js\/main\/core\/core_date.js","\/bitrix\/js\/main\/utils.js","\/local\/templates\/main\/js\/lazyload\/lazyload.min.js","\/local\/templates\/main\/js\/jquery-ui.min.js","\/local\/templates\/main\/js\/fancybox\/2.1.7\/jquery.fancybox.pack.js","\/local\/templates\/main\/js\/jquery.jscrollpane.min.js","\/local\/templates\/main\/js\/jquery.mousewheel.js","\/local\/templates\/main\/js\/slick\/1.8.0\/slick.min.js","\/local\/templates\/main\/js\/jquery.maskedinput.min.js","\/local\/templates\/main\/js\/jquery.autocomplete\/1.4.11\/jquery.autocomplete.min.js","\/local\/templates\/main\/js\/ion.rangeSlider.min.js","\/local\/templates\/main\/js\/jquery.gallerybox.js","\/local\/templates\/main\/js\/sly.js","\/local\/templates\/main\/js\/custom.js","\/local\/templates\/main\/js\/custom.forms.js","\/local\/templates\/main\/js\/custom.app.js","\/local\/templates\/main\/js\/custom.user.js","\/local\/templates\/main\/js\/custom.pagen.js","\/local\/templates\/main\/js\/custom.catalog.js","\/local\/templates\/main\/js\/custom.services.js","\/local\/templates\/main\/js\/custom.modify.js","\/local\/templates\/main\/js\/ecommerce\/goals.min.js","\/local\/templates\/main\/js\/ecommerce\/ecommerce-yandex.min.js","\/local\/templates\/main\/js\/ecommerce\/ingevents.4.0.8.min.js","\/local\/templates\/main\/js\/ecommerce\/vk_retargeting_events.js","\/local\/templates\/main\/components\/solverweb\/catalog.compare.list\/header_mob\/script.js"]);</script>
 <script>if (Intl && Intl.DateTimeFormat) document.cookie="BITRIX_SM_TZ="+Intl.DateTimeFormat().resolvedOptions().timeZone+"; path=/; expires=Sat, 01 Nov 2025 00:00:00 +0500";</script>
 <script>
@@ -1089,7 +1153,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 
 
 
-<script src="./index_files/template_816e75ba4b8fed06e1e2a0367ab582a0_v1.js"></script>
+<script src="./js/template_816e75ba4b8fed06e1e2a0367ab582a0_v1.js"></script>
 <script>var _ba = _ba || []; _ba.push(["aid", "4956cc4d139ca1b57361bc69f7b6b16b"]); _ba.push(["host", "www.stm66.ru"]); (function() {var ba = document.createElement("script"); ba.type = "text/javascript"; ba.async = true;ba.src = (document.location.protocol == "https:" ? "https://" : "http://") + "bitrix.info/ba.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ba, s);})();</script>
 
 
@@ -1109,7 +1173,7 @@ var obcompareListBasketR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 window.onload = function() {
 var obcompareListMobileR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compareListMobileR7Z7Le'},'AJAX':{'url':'/cart/','params':{'ajax_action':'Y'},'reload':{'compare_list_reload':'Y'},'templates':{'delete':'?action=DELETE_FROM_COMPARE_LIST&id='}},'POSITION':{'fixed':false,'align':{'vertical':'','horizontal':''}}})
 };
-</script><script src="./index_files/catalogMobileMenu.php"></script>
+</script>
 
 <script>
 				$(function() {
@@ -1135,7 +1199,7 @@ var obcompareListMobileR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
         ecommerce:"dataLayer"
    });
 </script>
-<script defer="" src="./index_files/js(1)"></script>
+<script defer="" src="./js/js(1)"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -1148,4 +1212,4 @@ var obcompareListMobileR7Z7Le = new JCCatalogCompareList({'VISUAL':{'ID':'compar
 </script>
 
 
-<script type="text/javascript" async="" src="./index_files/dyn-goal-config.js"></script><div class="autocomplete-suggestions" style="position: absolute; display: none; max-height: 300px; z-index: 9999;"></div></body></html>
+<script type="text/javascript" async="" src="./js/dyn-goal-config.js"></script><div class="autocomplete-suggestions" style="position: absolute; display: none; max-height: 300px; z-index: 9999;"></div></body></html>
